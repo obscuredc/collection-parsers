@@ -55,7 +55,6 @@ class StringLexer {
 	BuildNormal() {
 		this._ = "";
 	  console.log("began building normal");
-	  this.Continue();
     while (_SP.includes(this.ctok) == false && this.Stop == false) {
       this._ += this.ctok;
       this.Continue();
