@@ -17,6 +17,7 @@ class StringLexer {
     	this.ctok = "\u2929";
       this.Stop = true;
     }
+	  console.log("called this.Continue()");
   }
   Lex() {
     while (this.Stop == false) {
@@ -36,6 +37,7 @@ class StringLexer {
   }
   BuildVariable() {
     this._ = "";
+	  console.log("began building variable");
     while ((_C.includes(this.ctok) == true || _VP.includes(this.ctok) == true) && this.Stop == false) {
       this._ += this.ctok;
       this.Continue();
@@ -43,6 +45,7 @@ class StringLexer {
     this.Output.push({Type: "variable", Value: this._});
   }
   BuildFile() {
+	  console.log("began building file");
 		this._ = "";
     while ((_C.includes(this.ctok) == true || _FP.includes(this.ctok) == true) && this.Stop == false) {
       this._ += this.ctok;
