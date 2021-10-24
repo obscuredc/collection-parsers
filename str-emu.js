@@ -38,6 +38,7 @@ class StringLexer {
   BuildVariable() {
     this._ = "";
 	  console.log("began building variable");
+	  this.Continue();
     while ((_C.includes(this.ctok) == true || _VP.includes(this.ctok) == true) && this.Stop == false) {
       this._ += this.ctok;
       this.Continue();
@@ -45,8 +46,9 @@ class StringLexer {
     this.Output.push({Type: "variable", Value: this._});
   }
   BuildFile() {
-	  console.log("began building file");
 		this._ = "";
+	  console.log("began building file");
+	  this.Continue();
     while ((_C.includes(this.ctok) == true || _FP.includes(this.ctok) == true) && this.Stop == false) {
       this._ += this.ctok;
       this.Continue();
