@@ -62,9 +62,3 @@ class StringLexer {
     this.Output.push({Type: "string", Value: this._});
   }
 }
-var StringParserTest = new StringLexer("normal text lmao $variablelmao! @filerefrence_.-h normal!");
-StringParserTest.Lex();
-var  o = StringParserTest.Output.map((e) => {
-	return `${e.Type}:${e.Value}`;
-});
-console.log(o);
