@@ -1,6 +1,7 @@
 var _C = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var _FP = "_.-";
 var _VP = "_";
+var _SP = "$@";
 class StringLexer {
   constructor(text) {
     this.Text = text;
@@ -26,11 +27,7 @@ class StringLexer {
       } else if (this.ctok == "@") {
         this.BuildFile();
       } else {
-        this.Output.push({
-          Type: "string",
-          Value: this.ctok
-        });
-	this.Continue();
+        this.BuildNormal();
       }
     }
     return this.Output;
@@ -54,6 +51,16 @@ class StringLexer {
       this.Continue();
     }
     this.Output.push({Type: "file", Value: this._});
+  }
+	BuildNormal() {
+		this._ = "";
+	  console.log("began building normal");
+	  this.Continue();
+    while (_SP.includes(this.ctok) == false && this.Stop == false) {
+      this._ += this.ctok;
+      this.Continue();
+    }
+    this.Output.push({Type: "string", Value: this._});
   }
 }
 var StringParserTest = new StringLexer("normal text lmao $variablelmao! @filerefrence_.-h normal!");
