@@ -29,13 +29,14 @@ class StringLexer {
           Type: "string",
           Value: this.ctok
         });
+	this.Continue();
       }
     }
     return this.Output;
   }
   BuildVariable() {
     this._ = "";
-    while (_C.includes(this.ctok) == true || _VP.includes(this.ctok) == true) {
+    while ((_C.includes(this.ctok) == true || _VP.includes(this.ctok) == true) && this.Stop == false) {
       this._ += this.ctok;
       this.Continue();
     }
@@ -43,7 +44,7 @@ class StringLexer {
   }
   BuildFile() {
 		this._ = "";
-    while (_C.includes(this.ctok) == true || _FP.includes(this.ctok) == true) {
+    while ((_C.includes(this.ctok) == true || _FP.includes(this.ctok) == true) && this.Stop == false) {
       this._ += this.ctok;
       this.Continue();
     }
